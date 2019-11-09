@@ -8,16 +8,20 @@ namespace HCFramework
 {
     public class FrameWorkInitializer : MonoBehaviour
     {
-        [SerializeField]
-        private UIEnum startScreen;
-        private UIController uIController;
-        // Start is called before the first frame update
+        public int zobieCount=1;
+        public GameObject zombiePrefab;
+        List<ZombieFollow> zombies = new List<ZombieFollow>();
+        Transform playerTransform;
         void Start()
         {
-            //uIController = new GameUIController();
-            //uIController.Initialize(startScreen);
-            //uIController.GetScreens(this.gameObject);
+            playerTransform = FindObjectOfType<OVRPlayerController>().transform;
+            zombiePrefab = Resources.Load<GameObject>("zombiePrefab");
+            for (int i = 0; i < zobieCount; i++)
+            {
+                zombies.Add(new ZombieFollow(zombiePrefab,playerTransform));
+            }
         }
+
         private void OnEnable()
         {
             EventManager.Instance.AddListner<StartCoroutineEvent>(StartCoroutineListener);
