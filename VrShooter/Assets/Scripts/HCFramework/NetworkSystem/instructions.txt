@@ -1,0 +1,2 @@
+﻿Inherit the HTTPWebRequest class to you network manager and call the respective methodes to make get post and download requests.
+RequestType is the enum that has all the names of the requests like rejister request,getuserInfoRequest.
