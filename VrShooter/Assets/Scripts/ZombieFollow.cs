@@ -7,12 +7,17 @@ using UnityEngine.AI;
 public class ZombieFollow 
 {
     NavMeshAgent zombieAgent;
+    Animator anim; 
     Transform playerTransform;
     bool alive = true;
-    public ZombieFollow(GameObject zombiePrefab, Transform playerTransform)
+    public ZombieFollow(GameObject zombiePrefab, Transform playerTransform,string name)
     {
         this.playerTransform = playerTransform;
-        zombieAgent = GameObject.Instantiate(zombiePrefab, new Vector3(38f, 2.81f, 27f),Quaternion.identity).GetComponent<NavMeshAgent>();
+        Vector3 pos=new Vector3(Random.Range(-70,70),2,Random.Range(-70,70));
+        //new Vector3(38f, 2.81f, 27f)
+        zombieAgent = GameObject.Instantiate(zombiePrefab,pos ,Quaternion.identity).GetComponent<NavMeshAgent>();
+        zombieAgent.gameObject.name=name;
+        anim=zombieAgent.gameObject.GetComponent<Animator>();
         zombieUpdate();
     }
     ~ZombieFollow()
