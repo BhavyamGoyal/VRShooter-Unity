@@ -10,7 +10,7 @@ namespace HCFramework
     {
         public int zobieCount=1;
         public GameObject zombiePrefab;
-        List<ZombieFollow> zombies = new List<ZombieFollow>();
+        Dictionary<int,ZombieFollow> zombies = new Dictionary<int,ZombieFollow>();
         Transform playerTransform;
         void Start()
         {
@@ -18,7 +18,7 @@ namespace HCFramework
             zombiePrefab = Resources.Load<GameObject>("zombiePrefab");
             for (int i = 0; i < zobieCount; i++)
             {
-                zombies.Add(new ZombieFollow(zombiePrefab,playerTransform));
+                zombies.Add(i,new ZombieFollow(zombiePrefab,playerTransform,i+""));
             }
         }
 

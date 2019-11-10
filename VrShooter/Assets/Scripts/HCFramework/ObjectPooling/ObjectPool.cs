@@ -37,7 +37,7 @@ namespace HCFramework
             }
             if (poolObject == null)
             {
-
+                Debug.LogError("Pool Size not enough increade pool size");
                 objectsInPool++;
                 poolObject = (T)new BT();
 
